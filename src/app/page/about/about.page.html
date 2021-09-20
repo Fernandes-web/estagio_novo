@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Sobre</ion-title>
+
+    <ion-thumbnail slot="end" *ngIf="auth.user | async as user; else showLogin">
+      <img src="{{user.photoURL}}" alt="{{user.displayName}}" routerLink="/profile">
+    </ion-thumbnail>
+    <ng-template #showLogin>
+      <ion-thumbnail slot="end">
+        <img src="assets/user.png" alt="logue-se" routerLink="/login">
+      </ion-thumbnail>
+    </ng-template>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-img src="assets/sobre1.png" alt="Meu App 01" class="logotipo"></ion-img>
+  <p>Desenvolvemos esse aplicativo com o intuito de facilitar a busca por estágio,
+    onde você encontra vagas de em diversas áreas.
+    Oferecemos estágio de até 6 meses e se a empresa gostar do serviço oferecido já vai oferecer uma vaga permanente na empresa.
+    Temos parcerias com escolas privadas com ensino médio técnico e faculdades federais, pública e privada.
+    Além disso, estamos abertos a novas parcerias.</p>
+
+    <ion-button class="ion-margin-vertical" expand="block" color="secondary" routerLink="/home">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Página Inicial
+    </ion-button>
+
+    <ion-text class="ion-text-center ion-padding copyright">
+      &copy; Copyrigth 2021 Enaila, Alexssandra, Gabriele e Renan.
+    </ion-text>
+
+</ion-content>

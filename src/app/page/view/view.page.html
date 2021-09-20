@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Exibir Vaga</ion-title>
+
+    <ion-thumbnail slot="end" *ngIf="auth.user | async as user; else showLogin">
+      <img
+        src="{{user.photoURL}}"
+        alt="{{user.displayName}}"
+        routerLink="/profile"
+      />
+    </ion-thumbnail>
+    <ng-template #showLogin>
+      <ion-thumbnail slot="end">
+        <img src="assets/user.png" alt="logue-se" routerLink="/login" />
+      </ion-thumbnail>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <h2>{{ (item | async)?.title }}</h2>
+  <div class="autor-date">
+    Por {{ (item | async)?.author }} <br />em {{ (item | async)?.date | date:
+    'dd/MM/yyyy, hh:mm' }}.
+  </div>
+  <div [innerHTML]="(item | async)?.text"></div>
+
+  <p>
+    <ion-button
+      expand="block"
+      routerLink="/candidatar/{{ (item | async)?.id }}"
+      color="warning"
+    >
+      <ion-icon name="document-text" slot="start"></ion-icon>
+      Enviar Currículo
+    </ion-button>
+  </p>
+
+  <p>
+    <ion-button expand="block" routerLink="/home">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Voltar para as vagas
+    </ion-button>
+  </p>
+
+  <hr style="border-bottom: 3px dotted grey !important" />
+  <h4>Comente</h4>
+  <input type="hidden" name="uId" [(ngModel)]="uId" />
+  <input type="hidden" name="uName" [(ngModel)]="uName" />
+  <input type="hidden" name="uEmail" [(ngModel)]="uEmail" />
+  <ion-textarea
+    autoGrow="true"
+    name="uComment"
+    [(ngModel)]="uComment"
+    style="border: 1px solid grey"
+  ></ion-textarea>
+  <ion-button color="primary" size="small" (click)="sendComment()">
+    Enviar </ion-button
+  ><small>&nbsp; &nbsp; &nbsp; Somente texto.</small>
+
+  <hr style="margin-top: 1rem; border-bottom: 3px dotted grey !important" />
+  <h4>Comentários</h4>
+
+  <div *ngFor="let comment of comments | async">
+    <ion-card class="ion-no-margin ion-margin-vertical">
+      <ion-card-header>
+        <ion-card-subtitle
+          >{{comment.name}} em {{comment.date | date:
+          'dd/MM/yyyy'}}</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>{{comment.comment}}</ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
