@@ -8,7 +8,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class E404Page implements OnInit {
 
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth) {
+
+
+
+
+
+   }
 
   ngOnInit() { }
 
