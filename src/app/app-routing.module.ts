@@ -127,13 +127,27 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: toLogin },
   },
+
+  {
+    path: 'config',
+    loadChildren: () => import('./page/config/config.module').then( m => m.ConfigPageModule)
+  },
+  {
+    path: 'privacity',
+    loadChildren: () => import('./page/privacity/privacity.module').then( m => m.PrivacityPageModule)
+  },
   // Rota curinga (rotas inexistentes)
   // TEM QUE SER SEMPRE A ÚLTIMA ROTA
   {
+
     path: '**',
     loadChildren: () =>
       import('./page/e404/e404.module').then((m) => m.E404PageModule),
   },
+
+
+
+
 ];
 
 @NgModule({
