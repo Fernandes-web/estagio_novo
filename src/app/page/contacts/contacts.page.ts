@@ -89,9 +89,7 @@ export class ContactsPage implements OnInit {
       subject: [
         '',
         Validators.compose([
-          Validators.required,
-          Validators.minLength(5),
-          removeSpaces,
+          Validators.required
         ]),
       ],
       message: [

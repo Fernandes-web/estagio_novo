@@ -68,18 +68,15 @@
           Assunto:
           <ion-text color="danger" *ngIf="contactForm.controls.subject.errors">
             <small *ngIf="contactForm.controls.subject.errors.required"
-              >* Obrigatório</small
-            >
-            <small *ngIf="contactForm.controls.subject.errors.minlength"
-              >* Inválido</small
-            >
+              >* Obrigatório</small>
+
+
           </ion-text>
         </ion-label>
-        <ion-input
-          type="text"
-          id="subject"
-          formControlName="subject"
-        ></ion-input>
+        <ion-select placeholder="Selecione" formControlName="subject" id="subject">
+          <ion-select-option value="f">Sugestão</ion-select-option>
+          <ion-select-option value="m">Reclamação</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
