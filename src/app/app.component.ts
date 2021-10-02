@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   public appPages = [
     { title: 'Início', url: '/home', icon: 'home' },
     { title: 'Seu Currículo', url: '/curriculo', icon: 'document-text' },
@@ -28,5 +29,10 @@ export class AppComponent implements OnInit {
     } else {
       document.body.classList.remove('dark');
     }
+    //this.splash.style.display= 'none';
+
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+    }, 2000);
   }
 }
